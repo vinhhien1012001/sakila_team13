@@ -32,62 +32,6 @@ const router = express.Router();
  *        first_name: Vinh Hien
  *        last_name: Phan Thien
  *        last_update: 2006-02-15 04:34:34
- *    Film:
- *      type: object
- *      required:
- *        - film_id
- *        - title
- *        - language_id
- *        - rental_duration
- *        - rental_rate
- *        - replacement_cost
- *        - last_update
- *      properties:
- *        film_id:
- *          type: number
- *          description: The auto-generated id of the film
- *        title:
- *          type: string
- *          description: The film's title
- *        description:
- *          type: string
- *          description: The description of the film
- *        release_year:
- *          type: year
- *          description: The year release the film
- *        language_id:
- *          type: number
- *          description: The id's language of the film
- *        original_language_id:
- *          type: number
- *          description: The id's original language of the film
- *        rental_duration:
- *          type: number
- *          description: The time for rent
- *        rental_rate:
- *          type: number
- *          description: The rate when rent for film
- *        length:
- *          type: number
- *          description: The length of the film
- *        replacement_cost:
- *          type: number
- *          description: The replacement cost of the film
- *        rating:
- *          type: enum
- *          description: The rating of the film
- *        special_features:
- *          type: string
- *          description: The special feature like "trailers/commentaries/deleted scenes/behind the scene"
- *        last_update:
- *          type: timestamp
- *          description: The time of latest update
- *      example:
- *        id: 001
- *        title: Vinh Hien
- *        last_name: Phan Thien
- *        last_update: 2006-02-15 04:34:34
- *
  */
 
 /**
@@ -165,6 +109,7 @@ router.get("/:id", async (req, res) => {
  *       500:
  *         description: Some server error
  */
+
 router.post("/", async (req, res) => {
   let actor = req.body;
   const ret = await actorModel.add(actor);
@@ -176,6 +121,35 @@ router.post("/", async (req, res) => {
   res.status(201).json(actor);
 });
 
+/**
+ * @swagger
+ * /api/actors/{id}:
+ *   patch:
+ *     summary: Update the actor by id
+ *     tags: [Actors]
+ *     parameters:
+ *       - in: path
+ *         name: actor_id
+ *         schema:
+ *           type: number
+ *         required: true
+ *         description: Update the actor by id
+ *
+ *     responses:
+ *       200:
+ *         description: The actor was updated
+ *       404:
+ *         description: Some error, can't update
+ */
+
+router.patch("/:id", async (req, res) => {
+  const id = req.params.id;
+  const actor = req.body;
+  const n = await actorModel.update(id, actor);
+  res.json({
+    affected: n,
+  });
+});
 
 /**
  * @swagger
@@ -185,7 +159,7 @@ router.post("/", async (req, res) => {
  *     tags: [Actors]
  *     parameters:
  *       - in: path
- *         name: id
+ *         name: actor_id
  *         schema:
  *           type: number
  *         required: true
@@ -197,15 +171,6 @@ router.post("/", async (req, res) => {
  *       404:
  *         description: The actor was not found
  */
-
-router.patch('/:id', async (req, res) => {
-    const id = req.params.id;
-    const actor = req.body;
-    const n = await actorModel.update(id, actor);
-    res.json({
-        affected: n
-    });
-})
 
 router.delete("/:id", async (req, res) => {
   const id = req.params.id || 0;
