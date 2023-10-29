@@ -32,7 +32,7 @@ app.get("/", (req, res) => {
 
 app.use(express.json());
 app.use("/api/actors", actorRouter);
-app.use("/api/films", actorRouter);
+app.use("/api/films", filmRouter);
 app.use("/api-docs", swaggerUI.serve, swaggerUI.setup(specs));
 
 app.listen(PORT, () => {

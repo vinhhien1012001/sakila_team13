@@ -176,6 +176,7 @@ router.post("/", async (req, res) => {
   res.status(201).json(actor);
 });
 
+
 /**
  * @swagger
  * /api/actors/{id}:
@@ -196,6 +197,16 @@ router.post("/", async (req, res) => {
  *       404:
  *         description: The actor was not found
  */
+
+router.patch('/:id', async (req, res) => {
+    const id = req.params.id;
+    const actor = req.body;
+    const n = await actorModel.update(id, actor);
+    res.json({
+        affected: n
+    });
+})
+
 router.delete("/:id", async (req, res) => {
   const id = req.params.id || 0;
   const n = await actorModel.delete(id);

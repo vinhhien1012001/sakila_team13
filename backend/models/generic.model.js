@@ -33,6 +33,18 @@ export default function (table_name, id_field) {
                 throw err;
             }
         },
+        update: async (id, entity) => {
+            try {
+                const [result] = await db.query(`UPDATE ${table_name} SET ?
+                                         WHERE ${id_field} = ?`, [entity, id]);
+                if (result.affectedRows === 1) {
+                  return true; // Actor updated successfully
+                }
+                return false; // Update failed (actor not found)
+            } catch (err) {
+                throw err;
+            }
+        },
         delete: async (id) => {
             try {
                 const [result] = await db.query(`DELETE FROM ${table_name} WHERE ${id_field} = ?`, [id]);

@@ -4,31 +4,40 @@ import filmModel from "../models/film.model.js";
 const router = express.Router();
 
 router.get("/", async (req, res) => {
-  const list = await actorModel.findAll();
+  const list = await filmModel.findAll();
   res.json(list);
 });
 
 router.get("/:id", async (req, res) => {
   const id = req.params.id || 0;
-  const actor = await actorModel.findById(id);
-  if (actor === null) return res.status(204).end();
-  res.json(actor);
+  const film = await filmModel.findById(id);
+  if (film === null) return res.status(204).end();
+  res.json(film);
 });
 
 router.post("/", async (req, res) => {
-  let actor = req.body;
-  const ret = await actorModel.add(actor);
+  let film = req.body;
+  const ret = await filmModel.add(film);
 
-  actor = {
-    actor_id: ret[0],
-    ...actor,
+  film = {
+    film_id: ret[0],
+    ...film,
   };
-  res.status(201).json(actor);
+  res.status(201).json(film);
 });
+
+router.patch('/:id', async (req, res) => {
+    const id = req.params.id;
+    const film = req.body;
+    const n = await filmModel.update(id, film);
+    res.json({
+        affected: n
+    });
+})
 
 router.delete("/:id", async (req, res) => {
   const id = req.params.id || 0;
-  const n = await actorModel.delete(id);
+  const n = await filmModel.delete(id);
   res.json({
     affected: n,
   });
