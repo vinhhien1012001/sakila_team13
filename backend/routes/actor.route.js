@@ -1,7 +1,12 @@
 import express from "express";
 import actorModel from "../models/actor.model.js";
+import validate from '../middlewares/validate.mdw.js';
+import { readFile } from 'fs/promises';
 
 const router = express.Router();
+const schema = JSON.parse(await readFile(new URL('../schemas/actor.json', import.meta.url)));
+
+
 
 /**
  * @swagger
@@ -142,7 +147,7 @@ router.post("/", async (req, res) => {
  *         description: Some error, can't update
  */
 
-router.patch("/:id", async (req, res) => {
+router.patch("/:id", validate(schema), async (req, res) => {
   const id = req.params.id;
   const actor = req.body;
   const n = await actorModel.update(id, actor);
@@ -172,7 +177,7 @@ router.patch("/:id", async (req, res) => {
  *         description: The actor was not found
  */
 
-router.delete("/:id", async (req, res) => {
+router.delete("/:id", validate(schema), async (req, res) => {
   const id = req.params.id || 0;
   const n = await actorModel.delete(id);
   res.json({

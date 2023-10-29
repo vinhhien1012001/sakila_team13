@@ -1,7 +1,11 @@
 import express from "express";
 import filmModel from "../models/film.model.js";
+import validate from '../middlewares/validate.mdw.js';
+import { readFile } from 'fs/promises';
 
 const router = express.Router();
+const schema = JSON.parse(await readFile(new URL('../schemas/film.json', import.meta.url)));
+
 
 /**
  * @swagger
@@ -173,7 +177,7 @@ router.post("/", async (req, res) => {
  *         description: Some error, can't update
  */
 
-router.patch("/:id", async (req, res) => {
+router.patch("/:id", validate(schema), async (req, res) => {
   const id = req.params.id;
   const film = req.body;
   const n = await filmModel.update(id, film);
@@ -203,7 +207,7 @@ router.patch("/:id", async (req, res) => {
  *         description: The film was not found
  */
 
-router.delete("/:id", async (req, res) => {
+router.delete("/:id", validate(schema), async (req, res) => {
   const id = req.params.id || 0;
   const n = await filmModel.delete(id);
   res.json({

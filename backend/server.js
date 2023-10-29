@@ -3,6 +3,7 @@ import actorRouter from "./routes/actor.route.js";
 import filmRouter from "./routes/film.route.js";
 import swaggerJSDoc from "swagger-jsdoc";
 import swaggerUI from "swagger-ui-express";
+import asyncError from 'express-async-errors';
 
 const options = {
   definition: {
