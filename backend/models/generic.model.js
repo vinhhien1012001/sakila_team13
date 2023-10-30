@@ -24,7 +24,7 @@ export default function (table_name, id_field) {
         },
         add: async (entity) => {
             try {
-                const [result] = await db.query(`INSERT INTO ${table_name} (first_name, last_name) VALUES (?, ?)`, [entity.first_name, entity.last_name]);
+                const [result] = await db.query(`INSERT INTO ${table_name} SET ?`, [entity]);
                 if (result.affectedRows === 1) {
                   return result.insertId; // Return the ID of the newly added actor
                 }

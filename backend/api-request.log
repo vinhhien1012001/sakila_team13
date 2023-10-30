@@ -1,0 +1,11 @@
+2023-10-30T22:15:06.617Z [API request logging] info: [object Object]
+2023-10-30T22:27:00.107Z [API request logging] info: Request - Method: PATCH, URL: /api/films/1002
+2023-10-30T22:27:00.177Z [API request logging] info: Response - Status: 400
+2023-10-30T22:31:27.936Z [API request logging] info: Request - Method: POST, URL: /api/films
+2023-10-30T22:31:28.042Z [API request logging] info: Response - Status: 500
+2023-10-30T22:35:24.678Z [API request logging] info: Request - Method: POST, URL: /api/films
+2023-10-30T22:35:24.733Z [API request logging] info: Response - Status: 201
+2023-10-30T22:37:02.319Z [API request logging] info: Request - Method: POST, URL: /api/actors
+2023-10-30T22:37:02.338Z [API request logging] info: Response - Status: 201
+2023-10-30T22:37:18.463Z [API request logging] info: Request - Method: GET, URL: /api/actors
+2023-10-30T22:37:18.478Z [API request logging] info: Response - Status: 200
