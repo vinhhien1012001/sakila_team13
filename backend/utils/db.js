@@ -1,10 +1,10 @@
 import mysql from "mysql2";
 
 const pool = mysql.createPool({
-  host: "localhost",
-  port: 3306,
+  host: "127.0.0.1",
+  port: 8889,
   user: "root",
-  password: "dngsuu746539",
+  password: "root",
   database: "sakila",
   waitForConnections: true,
   connectionLimit: 10,
