@@ -33,9 +33,6 @@ app.use((req, res, next) => {
     // Log the request data
     logger.info(`Request - Method: ${req.method}, URL: ${req.url}`);
 
-    // Log the request headers
-    logger.debug('Request Headers:', req.headers);
-
     // Log the request body (if it's a POST request)
     if (req.method === 'POST' || req.method === 'PUT') {
         logger.debug('Request Body:', req.body);
@@ -44,8 +41,6 @@ app.use((req, res, next) => {
     res.on('finish', () => {
         // Log the response data
         logger.info(`Response - Status: ${res.statusCode}`);
-        // Log the response headers
-        logger.debug('Response Headers:', res.getHeaders());
     });
 
     next();

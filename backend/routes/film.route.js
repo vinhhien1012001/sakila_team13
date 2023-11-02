@@ -145,7 +145,7 @@ router.get("/:id", async (req, res) => {
  *         description: Some server error, can't create
  */
 
-router.post("/", async (req, res) => {
+router.post("/", validate(schema), async (req, res) => {
   let film = req.body;
   const ret = await filmModel.add(film);
 
