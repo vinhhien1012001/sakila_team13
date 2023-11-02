@@ -3,7 +3,7 @@ import actorRouter from "./routes/actor.route.js";
 import filmRouter from "./routes/film.route.js";
 import swaggerJSDoc from "swagger-jsdoc";
 import swaggerUI from "swagger-ui-express";
-import logger from './utils/logger.js';
+import logger from './middlewares/logger.mdw.js';
 import asyncError from 'express-async-errors';
 
 const options = {
@@ -28,30 +28,14 @@ const specs = swaggerJSDoc(options);
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-// Custom middleware for logging requests and responses
-app.use((req, res, next) => {
-    // Log the request data
-    logger.info(`Request - Method: ${req.method}, URL: ${req.url}`);
-
-    // Log the request body (if it's a POST request)
-    if (req.method === 'POST' || req.method === 'PUT') {
-        logger.debug('Request Body:', req.body);
-    }
-
-    res.on('finish', () => {
-        // Log the response data
-        logger.info(`Response - Status: ${res.statusCode}`);
-    });
-
-    next();
-});
-
 
 app.get("/", (req, res) => {
-  res.send(`Server is running`);
+    res.send(`Server is running`);
 });
 
 app.use(express.json());
+// Custom middleware for logging requests and responses
+app.use(logger);
 app.use("/api/actors", actorRouter);
 app.use("/api/films", filmRouter);
 app.use("/api-docs", swaggerUI.serve, swaggerUI.setup(specs));

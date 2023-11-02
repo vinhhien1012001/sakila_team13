@@ -1,6 +1,6 @@
 import winston from "winston";
 import DailyRotateFile from "winston-daily-rotate-file";
-import db from "./db.js";
+import db from "../db.js";
 
 const { createLogger, format, transports } = winston;
 const { combine, timestamp, label, printf, json } = format;
@@ -25,24 +25,6 @@ class MySQLTransport extends winston.Transport {
   }
 }
 
-// Create a transport for 1-minite log rotation
-// const dailyRotateTransport = new DailyRotateFile({
-//   filename: "logs/api-%DATE%.log",
-//   datePattern: "YYYY-MM-DD-HH-mm",
-//   zippedArchive: true,
-//   maxSize: "20m", // Max file size before rotation
-//   maxFiles: "60m", // Keep logs for 7 days
-// });
-
-// Create a transport for hour log rotation
-// const dailyRotateTransport = new DailyRotateFile({
-//     filename: 'logs/api-%DATE%.log',
-//     datePattern: 'YYYY-MM-DD-HH', // Log rotation on an hourly basis
-//     zippedArchive: true,
-//     maxSize: '20m', // Max file size before rotation
-//     maxFiles: '24h', // Retain logs for the last 24 hours (adjust as needed)
-//   });
-
 // Create a transport for daily log rotation
 const dailyRotateTransport = new DailyRotateFile({
   filename: "logs/api-%DATE%.log",
@@ -63,7 +45,6 @@ const logger = createLogger({
   ),
   transports: [
     new transports.File({ filename: "api-request.log" }),
-    new transports.Console(),
     new MySQLTransport(),
     dailyRotateTransport,
   ],

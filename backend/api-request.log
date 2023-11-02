@@ -1,18 +1,1 @@
-2023-11-02 01:04:48 [API request logging] info: Request - Method: GET, URL: /api/actors
-2023-11-02 01:04:48 [API request logging] info: Response - Status: 200
-2023-11-02 01:10:43 [API request logging] info: Request - Method: GET, URL: /api/actors
-2023-11-02 01:10:43 [API request logging] info: Response - Status: 200
-2023-11-02 01:30:03 [API request logging] info: Request - Method: GET, URL: /api/actors
-2023-11-02 01:30:03 [API request logging] info: Response - Status: 200
-2023-11-02 01:30:05 [API request logging] info: Request - Method: GET, URL: /api/actors
-2023-11-02 01:30:05 [API request logging] info: Response - Status: 200
-2023-11-02 01:30:09 [API request logging] info: Request - Method: GET, URL: /api/actors
-2023-11-02 01:30:09 [API request logging] info: Response - Status: 200
-2023-11-02 01:30:16 [API request logging] info: Request - Method: GET, URL: /api/films
-2023-11-02 01:30:16 [API request logging] info: Response - Status: 200
-2023-11-02 01:30:19 [API request logging] info: Request - Method: GET, URL: /api/films
-2023-11-02 01:30:20 [API request logging] info: Response - Status: 200
-2023-11-02 01:30:55 [API request logging] info: Request - Method: GET, URL: /api/actors
-2023-11-02 01:30:55 [API request logging] info: Response - Status: 200
-2023-11-02 01:32:44 [API request logging] info: Request - Method: GET, URL: /api/films
-2023-11-02 01:32:45 [API request logging] info: Response - Status: 200
+2023-11-02 02:08:15 [API request logging] error: Response - Status: 400 - PATCH: /api/films/1002

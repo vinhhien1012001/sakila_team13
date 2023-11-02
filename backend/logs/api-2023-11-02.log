@@ -1,0 +1,5 @@
+2023-11-02 01:58:49 [API request logging] error: Response - Status: 400 - /api/films/1002
+2023-11-02 02:00:08 [API request logging] error: Response - Status: 400 - /api/films/1002
+2023-11-02 02:05:59 [API request logging] error: Response - Status: 400 - /api/films/1002
+2023-11-02 02:06:12 [API request logging] error: Response - Status: 400 - /api/films/1002
+2023-11-02 02:08:15 [API request logging] error: Response - Status: 400 - PATCH: /api/films/1002
