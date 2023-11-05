@@ -3,11 +3,11 @@ import DailyRotateFile from "winston-daily-rotate-file";
 import db from "../db.js";
 
 const { createLogger, format, transports } = winston;
-const { combine, timestamp, label, printf, json } = format;
+const { combine, timestamp, printf, json } = format;
 
 // create a custom format for logging
-const logFormat = printf(({ level, message, label, timestamp }) => {
-  return `${timestamp} [${label}] ${level}: ${message}`;
+const logFormat = printf(({ level, message, timestamp }) => {
+  return `${timestamp} ${level}: ${message}`;
 });
 
 class MySQLTransport extends winston.Transport {
@@ -38,7 +38,6 @@ const dailyRotateTransport = new DailyRotateFile({
 const logger = createLogger({
   level: "debug",
   format: combine(
-    label({ label: "API request logging" }),
     timestamp({ format: "YYYY-MM-DD HH:mm:ss" }),
     json(),
     logFormat

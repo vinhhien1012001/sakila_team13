@@ -3,3 +3,10 @@
 2023-11-02 02:05:59 [API request logging] error: Response - Status: 400 - /api/films/1002
 2023-11-02 02:06:12 [API request logging] error: Response - Status: 400 - /api/films/1002
 2023-11-02 02:08:15 [API request logging] error: Response - Status: 400 - PATCH: /api/films/1002
+2023-11-02 02:19:05 [API request logging] error: Response - Status: 400 - PATCH: /api/films/1002
+2023-11-02 02:19:23 [API request logging] info: Response - Status: 200 - PATCH: /api/films/1002
+2023-11-02 02:27:30 [API request logging] debug: Request Body:
+2023-11-02 02:27:30 [API request logging] info: Response - Status: 201 - POST: /api/films
+2023-11-02 02:31:43 [API request logging] info: Response - Status: 200 - GET: /api/films
+2023-11-02 02:31:57 [API request logging] info: Response - Status: 200 - PATCH: /api/films/1002
+2023-11-02 02:46:42 [API request logging] error: Response - Status: 400 - PATCH: /api/films/1002

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Client</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Logs data</h1>
+        <!-- <div class="row">
+            <div class="filer-form">
+                <div class="row">
+                    <label for="timestampInput">Enter Timestamp:</label>
+                    <input type="text" id="timestampInput" placeholder="YYYY-MM-DD">
+                </div>
+                <div class="row">
+                    <label for="levelInput">Enter Timestamp:</label>
+                    <input type="text" id="levelInput" placeholder="error">
+                </div>
+            </div>
+        </div> -->
+        <button id="btn-fetch">FETCH</button>
+        <div class="row">
+            <table id="logTable">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Time</th>
+                        <th>Level</th>
+                        <th>Message</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script>
+        $(document).ready(() => {
+            $('#btn-fetch').on('click', () => {
+                $.ajax({
+                    url: `http://localhost:3000/api/logs`,
+                    method: 'GET',
+                    datatype: 'json',
+                    success: (logs) => {
+                        const tableBody = document.querySelector('#logTable tbody');
+                
+                        logs.forEach((log) => {   
+                            const row = document.createElement('tr');
+                            row.innerHTML = `
+                                <td>${log.id}</td>
+                                <td>${log.timestamp}</td>
+                                <td>${log.level}</td>
+                                <td>${log.message}</td>
+                            `;
+                            tableBody.appendChild(row);
+                        })
+                    },
+                    error: function (xhr, status, error) {
+                        console.error('Error fetching data: ' + error);
+                    }
+                })
+            })
+        })
+    </script>
+</body>
+</html>

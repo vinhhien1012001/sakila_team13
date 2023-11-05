@@ -9,6 +9,16 @@
             "date": 1698915419584,
             "name": "logs/api-2023-11-02.log",
             "hash": "c938ea0adf9ba984eb882d02c47ae467d2d6d476a8cb0517e4c32eb70df50fdc"
+        },
+        {
+            "date": 1699164806972,
+            "name": "logs/api-2023-11-04.log",
+            "hash": "daca3d1f40f9cc15e3b5758cd53fea0f790d3db5fe5034218cb4e3b4b8619af0"
+        },
+        {
+            "date": 1699172838699,
+            "name": "logs/api-2023-11-05.log",
+            "hash": "470f6af2d3f7c20c391b2b73efec3d3971ab9c5d5694a38171e463d103e83119"
         }
     ],
     "hashType": "sha256"

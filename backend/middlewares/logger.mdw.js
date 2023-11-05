@@ -4,9 +4,9 @@ import util from 'util';
 export default function (req, res, next) {
     // Log the request data
     // Log the request body (if it's a POST request)
-    if (req.method === 'POST' || req.method === 'PUT') {
-        logger.debug('Request Body:', util.inspect(req.body));
-    }
+    // if (req.method === 'POST' || req.method === 'PUT') {
+    //     logger.debug('Request Body:', util.inspect(req.body));
+    // }
 
     res.on('finish', () => {
         // Log the response data
