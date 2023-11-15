@@ -4,21 +4,19 @@ import filmRouter from "./routes/film.route.js";
 import loggerRouter from "./routes/logger.route.js";
 import swaggerJSDoc from "swagger-jsdoc";
 import swaggerUI from "swagger-ui-express";
-import logger from './middlewares/logger.mdw.js';
-import searchLog from './utils/logger/searchLog.js';
-import options from './utils/swagger/options.js';
-import cors from 'cors';
-import asyncError from 'express-async-errors';
-
+import logger from "./middlewares/logger.mdw.js";
+import searchLog from "./utils/logger/searchLog.js";
+import options from "./utils/swagger/options.js";
+import cors from "cors";
+import asyncError from "express-async-errors";
 
 const specs = swaggerJSDoc(options);
 
 const app = express();
-const PORT = process.env.PORT || 3000;
-
+const PORT = process.env.PORT || 3001;
 
 app.get("/", (req, res) => {
-    res.send(`Server is running`);
+  res.send(`Server is running`);
 });
 
 app.use(express.json());
