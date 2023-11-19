@@ -1,7 +1,10 @@
 import React, { useState } from "react";
 import axios from "../state/axios-instance";
+import { useNavigate } from "react-router-dom";
 
 const Login = ({ setAccessToken }) => {
+  const navigate = useNavigate();
+
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
@@ -13,8 +16,12 @@ const Login = ({ setAccessToken }) => {
       });
 
       const data = response.data;
-      setAccessToken(data.accessToken); // Set accessToken received from the server
+      //   setAccessToken(data.accessToken); // Set accessToken received from the server
       console.log("ACCESS TOKEN: ", data);
+      localStorage.setItem("accessToken", data.accessToken);
+      //   localStorage.setItem("accessToken", data.accessToken); // Store access token
+
+      navigate("/actors-list");
     } catch (error) {
       console.error("Login error:", error);
     }
