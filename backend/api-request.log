@@ -97,3 +97,12 @@
 2023-11-19 23:50:54 info: Response - Status: 200 - POST: /api/auth/login
 2023-11-19 23:50:57 error: Response - Status: 401 - GET: /api/films
 2023-11-19 23:52:10 info: Response - Status: 200 - POST: /api/auth/login
+2023-11-19 23:59:27 info: Response - Status: 200 - POST: /api/auth/login
+2023-11-19 23:59:36 info: Response - Status: 200 - POST: /api/auth/login
+2023-11-20 00:02:39 info: Response - Status: 200 - POST: /api/auth/login
+2023-11-20 00:03:45 info: Response - Status: 200 - GET: /api/actors
+2023-11-20 00:04:00 info: Response - Status: 200 - POST: /api/auth/login
+2023-11-20 00:04:00 info: Response - Status: 304 - GET: /api/actors
+2023-11-20 00:04:00 info: Response - Status: 304 - GET: /api/actors
+2023-11-20 00:04:42 info: Response - Status: 304 - GET: /api/actors
+2023-11-20 00:05:20 info: Response - Status: 304 - GET: /api/actors
