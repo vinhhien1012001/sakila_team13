@@ -1,11 +1,13 @@
 import express from "express";
 import filmModel from "../models/film.model.js";
-import validate from '../middlewares/validate.mdw.js';
-import { readFile } from 'fs/promises';
+import validate from "../middlewares/validate.mdw.js";
+import accessTokenMdw from "../middlewares/accessToken.mdw.js";
+import { readFile } from "fs/promises";
 
 const router = express.Router();
-const schema = JSON.parse(await readFile(new URL('../schemas/film.json', import.meta.url)));
-
+const schema = JSON.parse(
+  await readFile(new URL("../schemas/film.json", import.meta.url))
+);
 
 /**
  * @swagger
@@ -86,7 +88,7 @@ const schema = JSON.parse(await readFile(new URL('../schemas/film.json', import.
  *                 $ref: '#/components/schemas/Film'
  */
 
-router.get("/", async (req, res) => {
+router.get("/", accessTokenMdw, async (req, res) => {
   const list = await filmModel.findAll();
   res.json(list);
 });

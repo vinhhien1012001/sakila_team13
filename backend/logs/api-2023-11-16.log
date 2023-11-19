@@ -1,0 +1,17 @@
+2023-11-16 14:09:28 info: Response - Status: 200 - GET: /api/logs
+2023-11-16 14:09:28 info: Response - Status: 304 - GET: /api/logs
+2023-11-16 14:09:28 info: Response - Status: 200 - GET: /api/logs
+2023-11-16 14:09:28 info: Response - Status: 304 - GET: /api/logs
+2023-11-16 14:10:07 info: Response - Status: 200 - GET: /api/films
+2023-11-16 14:11:37 error: Response - Status: 401 - GET: /api/films
+2023-11-16 14:11:51 error: Response - Status: 401 - GET: /api/films
+2023-11-16 14:11:51 error: Response - Status: 401 - GET: /api/films
+2023-11-16 14:11:57 info: Response - Status: 200 - GET: /api/films
+2023-11-16 14:12:05 error: Response - Status: 401 - GET: /api/films
+2023-11-16 14:12:07 error: Response - Status: 401 - GET: /api/films
+2023-11-16 14:13:16 error: Response - Status: 401 - GET: /api/films
+2023-11-16 14:13:20 error: Response - Status: 401 - GET: /api/films
+2023-11-16 14:13:40 error: Response - Status: 401 - GET: /api/films
+2023-11-16 14:14:10 error: Response - Status: 401 - GET: /api/films
+2023-11-16 15:58:59 error: Response - Status: 401 - GET: /api/logs
+2023-11-16 15:58:59 error: Response - Status: 401 - GET: /api/logs

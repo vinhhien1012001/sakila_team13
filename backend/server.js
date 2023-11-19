@@ -2,9 +2,11 @@ import express from "express";
 import actorRouter from "./routes/actor.route.js";
 import filmRouter from "./routes/film.route.js";
 import loggerRouter from "./routes/logger.route.js";
+import authRouter from "./routes/auth.route.js";
 import swaggerJSDoc from "swagger-jsdoc";
 import swaggerUI from "swagger-ui-express";
 import logger from "./middlewares/logger.mdw.js";
+import accessTokenMdw from "./middlewares/accessToken.mdw.js";
 import searchLog from "./utils/logger/searchLog.js";
 import options from "./utils/swagger/options.js";
 import cors from "cors";
@@ -23,10 +25,12 @@ app.use(express.json());
 app.use(cors());
 // Custom middleware for logging requests and responses
 app.use(logger);
+// app.use(accessTokenMdw);
 app.use("/api/actors", actorRouter);
 app.use("/api/films", filmRouter);
 app.use("/api/logs", loggerRouter);
 app.use("/api-docs", swaggerUI.serve, swaggerUI.setup(specs));
+app.use("/api/auth", authRouter);
 
 // searchLog for debug
 searchLog();
