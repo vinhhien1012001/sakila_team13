@@ -1,6 +1,7 @@
 import express from "express";
 import actorModel from "../models/actor.model.js";
 import validate from '../middlewares/validate.mdw.js';
+import accessTokenMdw from "../middlewares/accessToken.mdw.js";
 import { readFile } from 'fs/promises';
 
 const router = express.Router();
@@ -56,7 +57,7 @@ const schema = JSON.parse(await readFile(new URL('../schemas/actor.json', import
  *                 $ref: '#/components/schemas/Actor'
  */
 
-router.get("/", async (req, res) => {
+router.get("/", accessTokenMdw, async (req, res) => {
   const list = await actorModel.findAll();
   res.json(list);
 });

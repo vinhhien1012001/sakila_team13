@@ -9,7 +9,6 @@ router.post("/login", async (req, res) => {
   const { username, password } = req.body;
 
   // Check if the username and password match in the database (query your MySQL database here)
-  console.log(username, password);
   const user = await userModel.findOne({ username, password });
 
   if (!user) {
@@ -17,7 +16,7 @@ router.post("/login", async (req, res) => {
   }
 
   // Assuming you use JWT for token generation
-  const accessToken = jwt.sign({ userId: user.id }, "accessToken123", {
+  const accessToken = jwt.sign({ userId: user.id }, process.env.ACCESS_TOKEN_SECRET, {
     expiresIn: "1h",
   });
 

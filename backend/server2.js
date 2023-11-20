@@ -14,7 +14,7 @@ import asyncError from "express-async-errors";
 const specs = swaggerJSDoc(options);
 
 const app = express();
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 3002;
 
 app.get("/", (req, res) => {
   res.send(`Server is running`);
