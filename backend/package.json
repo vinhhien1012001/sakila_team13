@@ -7,7 +7,7 @@
   "scripts": {
     "start": "node server",
     "dev": "nodemon server",
-    "dev2": "nodemon server2",
+    "dev2": "nodemon authServer",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
