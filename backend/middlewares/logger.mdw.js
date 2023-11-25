@@ -2,7 +2,7 @@ import logger from "../utils/logger/logger.js";
 
 export default function (req, res, next) {
   // Set up an event handler for each request
-  res.once("finish", () => {
+  res.on("finish", () => {
     // Log the response data
     if (res.statusCode >= 400) {
       logger.error(

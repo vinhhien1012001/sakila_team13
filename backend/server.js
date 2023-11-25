@@ -9,12 +9,16 @@ import swaggerUI from "swagger-ui-express";
 import logger from "./middlewares/logger.mdw.js";
 import options from "./utils/swagger/options.js";
 import cors from "cors";
+
+// rabbitMQ import
+// import newTask from './utils/rabbitMQ/new_task.js';
+import worker from './utils/rabbitMQ/publisher.js';
+
+import asyncError from "express-async-errors";
+
 // gRPC import
 import grpc from '@grpc/grpc-js';
 import protoLoader from '@grpc/proto-loader';
-import asyncError from "express-async-errors";
-
-
 const packageDefinition = protoLoader.loadSync("todo.proto", {});
 const grpcObject = grpc.loadPackageDefinition(packageDefinition);
 const todoPackage = grpcObject.todoPackage;
@@ -38,7 +42,6 @@ app.use("/api/films", filmRouter);
 app.use("/api/logs", loggerRouter);
 app.use("/api-docs", swaggerUI.serve, swaggerUI.setup(specs));
 app.use("/api/auth", authRouter);
-
 
 // apply gRPC to server with demo is todoList
 const server = new grpc.Server();
@@ -66,6 +69,9 @@ server.addService(todoPackage.Todo.service, {
         callback(null, {"items": todos})
     },
 })
+
+worker();
+
 
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
